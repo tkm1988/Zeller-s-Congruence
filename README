@@ -1,0 +1,4 @@
+This script computes Zeller congruence.
+
+ex)
+>Zeller.py [year] [month] [day]
