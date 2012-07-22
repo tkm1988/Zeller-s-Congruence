@@ -2,32 +2,38 @@
 import sys
 import math
 
+def Zeller(Y,m,q):
+    return int((q+math.floor((m+1)*26/10)+Y+math.floor(Y/4)+math.floor(Y/100)*6+math.floor(Y/400)) % 7)
+
+def getDayOfTheWeek(h):
+    if h == 1:
+        return "Sunday"
+    elif h == 2:
+        return "Monday"
+    elif h == 3:
+        return "Tuesday"
+    elif h == 4:
+        return "Wednesday"
+    elif h == 5:
+        return "Thursday"
+    elif h == 6:
+        return "Friday"
+    else :
+        return "Saturday"
+
 if len(sys.argv) == 4:
-    J = int(sys.argv[1])/100
-    K = int(sys.argv[1])%100
+    Y = int(sys.argv[1])
     m = int(sys.argv[2])
+    if m == 1:
+        m = 13
+    elif m == 2 :
+        m =14
     q = int(sys.argv[3])
 else :
-    K = 0
-    J = 0
+    Y = 0
     m = 0
     q = 0
-    print "Exit"
+    print "Please input \n>python Zeller.py year month day\n"
     exit()
 
-h = int((q+math.floor((m+1)*26/10)+K+math.floor(K/4)+math.floor(J/4)-2*J)%7)
-
-if h == 1:
-    print "Sunday"
-elif h == 2:
-    print "Monday"
-elif h == 3:
-    print "Tuesday"
-elif h == 4:
-    print "Wednesday"
-elif h == 5:
-    print "Thursday"
-elif h == 6:
-    print "Friday"
-else :
-    print "Saturday"
+print getDayOfTheWeek(Zeller(Y,m,q))
